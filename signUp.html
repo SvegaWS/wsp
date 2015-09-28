@@ -11,6 +11,7 @@ function balidatu(){
 	var email = document.getElementById("email").value;
 	var mugikorra = document.getElementById("mugikorra").value;
 	var ezpezialitate = document.getElementById("ezpezialitatea").value;
+	var idatziezpezialitatea=document.getElementById("idatziezpezialitatea").value;
 	if(izen==""){
 		errorea+="Izena eremua bete behar duzu \n";
 	}	
@@ -28,6 +29,12 @@ function balidatu(){
 		errorea+="Ezpezialitatea aukeratu behar duzu \n";
 
 	}
+	if(ezpezialitate=="4"){
+		if(idatziezpezialitatea==""){
+			errorea+="Ezpezialitatea idatzi behar duzu \n";
+		}
+
+	}
 	if(errorea!=""){
 		alert(errorea);
 		return false;
@@ -37,6 +44,11 @@ function balidatu(){
 		return true;
 	}
 }
+
+function erakutsi(){
+document.getElementById("IE").hidden = false;
+}
+
 </script>
 <head>
 
@@ -66,8 +78,13 @@ function balidatu(){
 				    <option value="1">Software Ingenieritza</option> 
 				    <option value="2">Hardware Ingenieritza</option> 
 				    <option value="3">Konputazioa</option>
-					<option value="4">Beste ezpezialitate bat</option>
+					<option value="4" onclick="erakutsi()">Beste ezpezialitate bat</option>
 				 </select>
+				  <br>
+				  <br>
+				 <p hidden id="IE">Idatzi epezialitatea(*): <input type="text" id="idatziezpezialitatea" name="idatziezpezialitatea" size="30" maxlength="100">
+				 </p>
+				 <br>
 				 <br>
 				 Tecnologias y herramientas en las que esta interesado:
 				 <br>
@@ -76,7 +93,7 @@ function balidatu(){
 				 <br>
 				 Argazkia:
 				 <br>
-				 <input type="file" name="argazkia" size="30"> 
+				 <input type="file" name="argazkia" id="argazkia" size="30"> 
 				 <br>
 				 <br>
 				 <input type="Reset"  value="Dena Ezabatu">&nbsp&nbsp&nbsp&nbsp
