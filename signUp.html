@@ -8,6 +8,7 @@ function balidatu(){
 	var balidatzekoemail= new RegExp("^[a-zA-Z]+[0-9]{3}\@ikasle\.ehu\.es|eus$");
 	var izen = document.getElementById("izena").value;
 	var abizena1 = document.getElementById("abizena1").value;
+	var pasahitza = document.getElementById("pasahitza").value;
 	var email = document.getElementById("email").value;
 	var mugikorra = document.getElementById("mugikorra").value;
 	var ezpezialitate = document.getElementById("ezpezialitatea").value;
@@ -17,6 +18,9 @@ function balidatu(){
 	}	
 	if(abizena1==""){
 		errorea+="Lehenengo abizena eremua bete behar duzu \n";
+	}
+	if(pasahitza==""){
+		errorea+="Pasahitza eremua bete behar duzu \n";
 	}
 	if(balidatzekoemail.test(email)==false){
 		errorea+="Email eremua bete behar duzu \n";	
@@ -29,7 +33,7 @@ function balidatu(){
 		errorea+="Ezpezialitatea aukeratu behar duzu \n";
 
 	}
-	if(ezpezialitate=="4"){
+	if(ezpezialitate=="Beste ezpezialitate bat"){
 		if(idatziezpezialitatea==""){
 			errorea+="Ezpezialitatea idatzi behar duzu \n";
 		}
@@ -40,13 +44,18 @@ function balidatu(){
 		return false;
 	}
 	else{
-		alert("Dena ondo bete duzu, bidalketa egin da.");
+		//alert("Dena ondo bete duzu, bidalketa egin da.");
 		return true;
 	}
 }
 
 function erakutsi(){
 document.getElementById("IE").hidden = false;
+}
+
+function ezkutatu(){
+document.getElementById("IE").hidden = true;
+
 }
 
 </script>
@@ -56,12 +65,15 @@ document.getElementById("IE").hidden = false;
     
 </head>
 		 <body>
-			 <form name="erregistro" id="erregistro" onSubmit="return balidatu()" method="POST" action="phporria.php">
+			 <form name="erregistro" method="post" action="proba.php" onSubmit="return balidatu();" >
 				 Izena (*):
 				 <input type="text" id="izena"  name="izena" size="30" maxlength="100"> 
 				 <br>
 				 Lehenengo Abizena (*):
 				 <input type="text" id="abizena1" name="abizena" size="30" maxlength="100"> 
+				 <br>
+				 Pasahitza (*):
+				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100"> 
 				 <br>
 				 Bigarren Abizena :
 				 <input type="text" id="abizena2" name="2abizena" size="30" maxlength="100"> 
@@ -75,18 +87,18 @@ document.getElementById("IE").hidden = false;
 				 Ezpezialitatea (*):
 				 <select name="ezpezialitatea" id="ezpezialitatea">
 					<option value="" selected disabled > Aukeratu ezpezialitate</option> 
-				    <option value="1">Software Ingenieritza</option> 
-				    <option value="2">Hardware Ingenieritza</option> 
-				    <option value="3">Konputazioa</option>
-					<option value="4" onclick="erakutsi()">Beste ezpezialitate bat</option>
+				    <option value="Software Ingenieritza" onclick="ezkutatu()">Software Ingenieritza</option> 
+				    <option value="Hardware Ingenieritza" onclick="ezkutatu()">Hardware Ingenieritza</option> 
+				    <option value="Konputazioa" onclick="ezkutatu()">Konputazioa</option>
+					<!--<option value="Beste ezpezialitate bat" onclick="erakutsi()">Beste ezpezialitate bat</option>-->
 				 </select>
 				  <br>
 				  <br>
-				 <p hidden id="IE">Idatzi epezialitatea(*): <input type="text" id="idatziezpezialitatea" name="idatziezpezialitatea" size="30" maxlength="100">
-				 </p>
+				 <!--<p hidden id="IE">Idatzi epezialitatea(*): <input type="text" id="idatziezpezialitatea" name="idatziezpezialitatea" size="30" maxlength="100">-->
+				 <!--</p>-->
 				 <br>
 				 <br>
-				 Tecnologias y herramientas en las que esta interesado:
+				 Teknologia eta tresnetan duzun interesa:
 				 <br>
 				 <textarea cols="40" rows="7" name="interesak"></textarea>
 				 <br>
