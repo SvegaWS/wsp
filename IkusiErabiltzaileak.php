@@ -1,14 +1,19 @@
 <?php
-	mysql_connect ("localhost", "root","") or die (mysql_error());
-	mysql_select_db("quiz") or die(mysql_error());
+	mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+	mysql_select_db("u615503288_erab") or die(mysql_error());
 	
-	$erabiltzaileak =mysql_query( "select * from izena" );
+	$erabiltzaileak =mysql_query( "select * from erabiltzaileak" );
+		
+	echo '<table border=1><tr><th> IZENA </th><th> ABIZENA </th><th> ABIZENA2 </th><th> EMAIL </th><th> MUGIKORRA </th>
+	<th> EZPEZIALITATEA </th><th> INTERESAK </th><th> PASAHITZA </th></tr>';
 	
-	echo '<table border=1><tr><th>NAN </th><th> IZENA </th></tr>';
+	if($erabiltzaileak === FALSE) { 
+		die(mysql_error());
+	}	
 	
 	while( $row =mysql_fetch_array( $erabiltzaileak )) {
-		echo '<tr><td>'.$row['izena'].'</td> <td>'.$row['abizena'].'</td><td>'.$row['2abizena'].'</td><td>'.$row['e-mail'].'</td>
-		<td>'.$row['mugikorra'].'</td><td>'.$row['ezpezialitatea'].'</td><td>'.$row['interesak'].'</td><td>'.$row['pasahitza'].'</td></tr>';
+		echo '<tr><td>'.$row['Izena'].'</td> <td>'.$row['Abizena1'].'</td><td>'.$row['Abizena2'].'</td><td>'.$row['Email'].'</td>
+		<td>'.$row['Mugikorra'].'</td><td>'.$row['Ezpezialitatea'].'</td><td>'.$row['Interesak'].'</td><td>'.$row['Pasahitza'].'</td></tr>';
 	}
 	
 	echo '</table>';

@@ -1,3 +1,3 @@
 <?php 
-echo "kkkkkkkk";
+echo $_POST['izena'];
 ?>
