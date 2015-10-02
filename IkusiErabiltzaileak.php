@@ -5,7 +5,7 @@
 	$erabiltzaileak =mysql_query( "select * from erabiltzaileak" );
 		
 	echo '<table border=1><tr><th> IZENA </th><th> ABIZENA </th><th> ABIZENA2 </th><th> EMAIL </th><th> MUGIKORRA </th>
-	<th> EZPEZIALITATEA </th><th> INTERESAK </th><th> PASAHITZA </th></tr>';
+	<th> EZPEZIALITATEA </th><th> INTERESAK </th></tr>';
 	
 	if($erabiltzaileak === FALSE) { 
 		die(mysql_error());
@@ -13,7 +13,7 @@
 	
 	while( $row =mysql_fetch_array( $erabiltzaileak )) {
 		echo '<tr><td>'.$row['Izena'].'</td> <td>'.$row['Abizena1'].'</td><td>'.$row['Abizena2'].'</td><td>'.$row['Email'].'</td>
-		<td>'.$row['Mugikorra'].'</td><td>'.$row['Ezpezialitatea'].'</td><td>'.$row['Interesak'].'</td><td>'.$row['Pasahitza'].'</td></tr>';
+		<td>'.$row['Mugikorra'].'</td><td>'.$row['Ezpezialitatea'].'</td><td>'.$row['Interesak'].'</td></tr>';
 	}
 	
 	echo '</table>';
