@@ -40,6 +40,9 @@
 				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100"> 
 				 <br>
 				 <input type="submit" value="Enviar">
+				 <br>
+				 <input type="submit" value="Atzera" name="Atzera" >
+
 
 
 </body>
@@ -47,9 +50,10 @@
 
 <?php
 
-	
-	
-	if(isset($_POST['email'])){
+	if(isset($_POST['Atzera'])){
+		header('Location: ./layout.html');
+	}
+	else if(isset($_POST['email'])){
 	
 	
 	$email = $_POST['email'];
@@ -87,7 +91,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 			$user = mysql_fetch_array($emaitza_query);
 			
 			if($user['Pasahitza']==$pasahitza){
-			header('Location: ./Sartuta.php');
+			session_start();
+			$_SESSION['erabiltzaile']=$email;
+			header('Location: ./InsertQuestion.php');
 			}else{
 			echo('<script> alert("Pasahitza okerra da.")</script>');
 			}
