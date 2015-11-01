@@ -77,18 +77,41 @@ session_start();
 		mysql_select_db("u615503288_erab") or die(mysql_error());
 		//$link = mysql_connect("localhost","root","") or die(mysql_error());
 		//mysql_select_db("quiz") or die(mysql_error());
-		$sql="INSERT INTO galderak(galdera, erantzuna, zailtasuna, email) VALUES
-		( '$_POST[galdera]','$_POST[erantzuna]','$_POST[zailtasuna]','$_SESSION[erabiltzaile]')";
-		
-		$emaitza_query=  mysql_query($sql);
-		if (!$emaitza_query){
-			die('Error: ' . mysql_error());
-		}
-		mysql_close($link);
-		header('Location: ./layout.html');
+			$sql="INSERT INTO galderak(galdera, erantzuna, zailtasuna, email) VALUES
+			( '$_POST[galdera]','$_POST[erantzuna]','$_POST[zailtasuna]','$_SESSION[erabiltzaile]')";
 			
+			$emaitza_query=  mysql_query($sql);
+			if (!$emaitza_query){
+				die('Error: ' . mysql_error());
+			}
+			mysql_close($link);
+			
+		
+		//XML-an txertatzeko
+		
+		
+		$xml = simplexml_load_file('galderak.xml');
 
+		$assessmentItem=$xml->addChild('assessmentItem');
+		
+		if(isset($_POST['zailtasuna'])){
+			$assessmentItem->addAttribute('konplexutasuna',$_POST['zailtasuna']);
+		}else{
+			$assessmentItem->addAttribute('konplexutasuna','Ez dauka konplexutasunik');
+		}		
+		
+		$itembody=$assessmentItem->addChild('itemBody');
+		$correctResponse=$assessmentItem->addChild('correctResponse');
+		$p=$itembody->addChild('p',$_POST['galdera']);
+	
+		$correctResponse->addChild('value',$_POST['erantzuna']);
+		
+		$xml->asXML('galderak.xml');
+		
+		echo"<a href='layout.html'>Home</a>";
+		echo"<br>";
+		echo"<a href='seeXMLQuestions.php'>Ikusi galderak</a>";
+		//header('Location: ./layout.html');
 }
 
 ?>
-

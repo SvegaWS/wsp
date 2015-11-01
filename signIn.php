@@ -74,10 +74,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 		return true;
 	}
 */
-		$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
-		mysql_select_db("u615503288_erab") or die(mysql_error());
-		//$link=mysql_connect("localhost","root","") or die(mysql_error());
-		//mysql_select_db("quiz") or die(mysql_error());
+		//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+		//mysql_select_db("u615503288_erab") or die(mysql_error());
+		$link=mysql_connect("localhost","root","") or die(mysql_error());
+		mysql_select_db("quiz") or die(mysql_error());
 		
 		$sql=("SELECT * FROM erabiltzaileak WHERE Email='".$_POST['email']."';");
 		

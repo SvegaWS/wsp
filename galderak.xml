@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<assessmentItems>
+	<assessmentItem konplexutasuna="3">
+		<itemBody> 
+			<p>Amanita muskaria zer da?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Perretxikoa</value>
+		</correctResponse>
+	</assessmentItem>
+	<assessmentItem konplexutasuna="5">
+		<itemBody>
+			<p>Amanita hilkorrena da:</p>
+		</itemBody>
+		<correctResponse>
+			<value>Phalloides</value>
+		</correctResponse>
+	</assessmentItem>
+	<assesmentItem konplexutasuna="Ez dauka konplexutasunik">
+		<itemBody>
+			<p>proba</p>
+		</itemBody>
+		<correctResponse>
+			<value>proba</value>
+		</correctResponse>
+	</assesmentItem>
+<assessmentItem konplexutasuna="Ez dauka konplexutasunik"><itemBody><p>proba xml</p></itemBody><correctResponse><value>proba </value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>proba zailtasun</p></itemBody><correctResponse><value>proba</value></correctResponse></assessmentItem></assessmentItems>
