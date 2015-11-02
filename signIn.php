@@ -93,6 +93,35 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 			if($user['Pasahitza']==$pasahitza){
 			session_start();
 			$_SESSION['erabiltzaile']=$email;
+			
+			$info = getdate();
+			$eguna = $info['mday'];
+			$hil = $info['mon'];
+			$urtea = $info['year'];
+			$ordua= $info['hours'];
+			$min = $info['minutes'];
+			$seg = $info['seconds'];
+
+			$oraing_ordua = "$eguna/$hil/$urtea => $ordua:$min:$seg";
+			
+			
+		
+
+			// Log In-a noiz egin den taulan sartzeko.
+			
+			//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+			//mysql_select_db("u615503288_erab") or die(mysql_error());
+			$link2=mysql_connect("localhost","root","") or die(mysql_error());
+			mysql_select_db("quiz") or die(mysql_error());
+		
+			$sql2="INSERT INTO konexioak (email,ordua) VALUES
+			('$_POST[email]','$oraing_ordua')";
+		
+			$emaitza_query2=  mysql_query($sql2);
+			if (!$emaitza_query2){
+				die('Error: ' . mysql_error());
+			}
+			mysql_close($link2);
 			header('Location: ./InsertQuestion.php');
 			}else{
 			echo('<script> alert("Pasahitza okerra da.")</script>');

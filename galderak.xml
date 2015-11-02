@@ -24,4 +24,4 @@
 			<value>proba</value>
 		</correctResponse>
 	</assesmentItem>
-<assessmentItem konplexutasuna="Ez dauka konplexutasunik"><itemBody><p>proba xml</p></itemBody><correctResponse><value>proba </value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>proba zailtasun</p></itemBody><correctResponse><value>proba</value></correctResponse></assessmentItem></assessmentItems>
+<assessmentItem konplexutasuna="Ez dauka konplexutasunik"><itemBody><p>proba xml</p></itemBody><correctResponse><value>proba </value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>proba zailtasun</p></itemBody><correctResponse><value>proba</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="2"><itemBody><p>proba galdera hautazko</p></itemBody><correctResponse><value>hautazko</value></correctResponse></assessmentItem></assessmentItems>

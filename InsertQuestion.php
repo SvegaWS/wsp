@@ -61,7 +61,7 @@ session_start();
 </html>
 
 <?php
-
+//include 'LortuOrdua';
 
 	if(isset($_POST['erantzuna'],$_POST['galdera'])){
 	
@@ -73,10 +73,10 @@ session_start();
 
 
 
-		$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
-		mysql_select_db("u615503288_erab") or die(mysql_error());
-		//$link = mysql_connect("localhost","root","") or die(mysql_error());
-		//mysql_select_db("quiz") or die(mysql_error());
+		//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+		//mysql_select_db("u615503288_erab") or die(mysql_error());
+		$link = mysql_connect("localhost","root","") or die(mysql_error());
+		mysql_select_db("quiz") or die(mysql_error());
 			$sql="INSERT INTO galderak(galdera, erantzuna, zailtasuna, email) VALUES
 			( '$_POST[galdera]','$_POST[erantzuna]','$_POST[zailtasuna]','$_SESSION[erabiltzaile]')";
 			
@@ -85,7 +85,35 @@ session_start();
 				die('Error: ' . mysql_error());
 			}
 			mysql_close($link);
-			
+
+		// Eskaera zer ordutan egin den jakiteko kodea
+
+		$info = getdate();
+		$eguna = $info['mday'];
+		$hil = $info['mon'];
+		$urtea = $info['year'];
+		$ordua= $info['hours'];
+		$min = $info['minutes'];
+		$seg = $info['seconds'];
+
+		$oraing_ordua = "$eguna/$hil/$urtea => $ordua:$min:$seg";
+
+		//$oraing_ordua=LortuOrdua();
+
+		// Eskaerak taulan sartu ahal izateko informazioa, eskara bakoitzeko
+		//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+		//mysql_select_db("u615503288_erab") or die(mysql_error());
+		$link2 = mysql_connect("localhost","root","") or die(mysql_error());
+		mysql_select_db("quiz") or die(mysql_error());
+		// Bi erabiltzaile motetatik desberdintzeko, anonimoa edo erregistratua
+		
+			$sql2="INSERT INTO ekintzak(konexioa,email,ekintza,ordua,ip) VALUES
+			( 'erabiltzaile','$_SESSION[erabiltzaile]','Galdera txertatu','$oraing_ordua','$_SERVER[REMOTE_ADDR]')";
+			$emaitza_query2=  mysql_query($sql2);
+			if (!$emaitza_query2){
+				die('Error: ' . mysql_error());
+			}
+			mysql_close($link2);	
 		
 		//XML-an txertatzeko
 		
