@@ -73,10 +73,10 @@ session_start();
 
 
 
-		//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
-		//mysql_select_db("u615503288_erab") or die(mysql_error());
-		$link = mysql_connect("localhost","root","") or die(mysql_error());
-		mysql_select_db("quiz") or die(mysql_error());
+		$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+		mysql_select_db("u615503288_erab") or die(mysql_error());
+		//$link = mysql_connect("localhost","root","") or die(mysql_error());
+		//mysql_select_db("quiz") or die(mysql_error());
 			$sql="INSERT INTO galderak(galdera, erantzuna, zailtasuna, email) VALUES
 			( '$_POST[galdera]','$_POST[erantzuna]','$_POST[zailtasuna]','$_SESSION[erabiltzaile]')";
 			
@@ -101,10 +101,10 @@ session_start();
 		//$oraing_ordua=LortuOrdua();
 
 		// Eskaerak taulan sartu ahal izateko informazioa, eskara bakoitzeko
-		//$link=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
-		//mysql_select_db("u615503288_erab") or die(mysql_error());
-		$link2 = mysql_connect("localhost","root","") or die(mysql_error());
-		mysql_select_db("quiz") or die(mysql_error());
+		$link2=mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
+		mysql_select_db("u615503288_erab") or die(mysql_error());
+		//$link2 = mysql_connect("localhost","root","") or die(mysql_error());
+		//mysql_select_db("quiz") or die(mysql_error());
 		// Bi erabiltzaile motetatik desberdintzeko, anonimoa edo erregistratua
 		
 			$sql2="INSERT INTO ekintzak(konexioa,email,ekintza,ordua,ip) VALUES

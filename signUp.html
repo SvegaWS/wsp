@@ -1,6 +1,9 @@
 <html>
 <script type="text/javascript">
 
+	//var divpass;
+	//var divemail;
+
 function balidatu(){
 
 	var errorea="";
@@ -13,6 +16,10 @@ function balidatu(){
 	var mugikorra = document.getElementById("mugikorra").value;
 	var ezpezialitate = document.getElementById("ezpezialitatea").value;
 	var idatziezpezialitatea=document.getElementById("idatziezpezialitatea").value;
+	/*
+	var divpass= document.getElementById("pasa");
+	var divemail= document.getElementById("erantzuna");
+	*/
 	if(izen==""){
 		errorea+="Izena eremua bete behar duzu \n";
 	}	
@@ -33,12 +40,35 @@ function balidatu(){
 		errorea+="Ezpezialitatea aukeratu behar duzu \n";
 
 	}
+	
 	if(ezpezialitate=="Beste ezpezialitate bat"){
 		if(idatziezpezialitatea==""){
 			errorea+="Ezpezialitatea idatzi behar duzu \n";
 		}
 
 	}
+	
+	/*
+	if(divpass==""){
+		errorea+="pasahitza sartu behar da\n";
+
+	}
+	if(divpass="Pasahitza baliogabea"){
+		errorea+="pasahitza insegurua n\";
+	
+	}
+	if(divemail==""){
+		errorea+="emaila sartu behar da\n";
+
+	}
+	if(divemail="Email okerra"){
+		errorea+="email erregistratua n\";
+	
+	}
+	*/
+	
+	
+	
 	if(errorea!=""){
 		alert(errorea);
 		return false;
@@ -48,6 +78,43 @@ function balidatu(){
 		return true;
 	}
 }
+
+function balidatuEmail(){
+
+ 		
+		xmlhttp= new XMLHttpRequest();
+		var posta=document.getElementById("email").value;
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("erantzuna").innerHTML=xmlhttp.responseText; 
+				//divemail=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("POST","soapBezMatrikula.php"); 
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("email="+posta);
+		
+	}
+	
+	function balidatuPass(){
+
+ 		
+		xmlhttp= new XMLHttpRequest();
+		var pass=document.getElementById("pasahitza").value;
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("pasa").innerHTML=xmlhttp.responseText; 
+				//divpass=xmlhttp.responseText;
+				
+			}
+		}
+		xmlhttp.open("POST","soapBezPasahitza.php"); 
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("pass="+pass);
+		
+	}
 
 function erakutsi(){
 document.getElementById("IE").hidden = false;
@@ -73,13 +140,17 @@ document.getElementById("IE").hidden = true;
 				 <input type="text" id="abizena1" name="abizena" size="30" maxlength="100"> 
 				 <br>
 				 Pasahitza (*):
-				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100"> 
+				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100" onchange="balidatuPass();"> 
+				 <div id="pasa" style="color:#A901DB" >
+				 </div>
 				 <br>
 				 Bigarren Abizena :
 				 <input type="text" id="abizena2" name="abizena2" size="30" maxlength="100"> 
 				 <br>
 				 Posta elektronikoa (*):
-				 <input type="text" id="email" name="email" size="30" maxlength="100"> 
+				 <input type="text" id="email" name="email" size="30" maxlength="100" onchange="balidatuEmail();"> 
+				 <div id="erantzuna" style="color:#A901DB">
+				 </div>
 				 <br>
 				 Mugikor zenbakia(*):
 				 <input type="text" id="mugikorra" name="mugikorra" size="30" maxlength="100"> 
@@ -111,5 +182,11 @@ document.getElementById("IE").hidden = true;
 				 <input type="Reset"  value="Dena Ezabatu">&nbsp&nbsp&nbsp&nbsp
 				 <input type="submit" value="Enviar">
 			 </form>
+			 
+			 	 <br>
+			 	 
+			
+				 <br>
+				 
 			 </body>
 </html>
