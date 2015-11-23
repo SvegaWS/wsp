@@ -1,6 +1,9 @@
 <?php
+	include "emailBalidatu.php";
+	include "mugikorraBalidatu.php";
+	include "pasahitzaBalidatu.php";
 
-	if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
+	if (balidatuMugikorra($_POST['mugikorra'])&& balidatuEmail($_POST['email']) && balidatuPasahitza($_POST['pasahitza'])) {
 	
 		mysql_connect("mysql.hostinger.es","u615503288_sws","enekosergio") or die(mysql_error());
 		mysql_select_db("u615503288_erab") or die(mysql_error());
@@ -26,7 +29,7 @@
 		mysql_close();
 		echo "<p> <a href='IkusiErabiltzaileak.php'> Erregistroak ikusi </a>";
 	}else{
-		echo'<script>alert("Posta formatu desegokia")</script>';
+		echo'<script>alert("Datu desegokiak")</script>';
 		header('Location: ./signUp.html');
 	}
 

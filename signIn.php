@@ -50,6 +50,8 @@
 
 <?php
 
+	include "emailBalidatu.php";
+
 	if(isset($_POST['Atzera'])){
 		header('Location: ./layout.html');
 	}
@@ -62,10 +64,9 @@
 
 
 // Validate email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-	} else {
-     echo('<script> alert("Idatzi duzun postaren formatua okerra da.")</script>');
-}
+//if (balidatuEmail($email)) {
+
+
 /*  
 	FILTRATZEKO BESTE POSIBILITATE BAT, BAKARRIK GURE EMAILEN EGITURA DAUKATEN CORREOAK ONARTUKO LUKEENA
 	if(preg_match('/^[a-zA-Z]+[0-9]{3}\@ikasle\.ehu\.es|eus$/', $email))return true;
@@ -94,6 +95,11 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 				session_start();
 				$_SESSION['erabiltzaile']=$email;
 			
+				if(preg_match('/^[a-zA-Z]+[0-9]{3}\@ikasle\.ehu\.es|eus$/',$email)){
+					$_SESSION['baimena']="ikasle";
+				}else{
+					$_SESSION['baimena']="irakasle";
+				}
 				$info = getdate();
 				$eguna = $info['mday'];
 				$hil = $info['mon'];
@@ -122,14 +128,18 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 					die('Error: ' . mysql_error());
 				}
 				mysql_close($link2);
-				header('Location: ./InsertQuestion.php');
+				if($_SESSION['baimena']=="ikasle")header('Location: ./handlingQuizzes.php');
+				else header('Location: ./reviewingQuizzes.php');
+				
 				}else{
 				echo('<script> alert("Pasahitza okerra da.")</script>');
 				}
 		mysql_close($link);
 		
-	}
-
+		}
+	//}else {
+	//	echo('<script> alert("Idatzi duzun posta ez dago erregistratuta.")</script>');
+//}
 }
 
 ?>

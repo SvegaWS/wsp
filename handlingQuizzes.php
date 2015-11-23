@@ -1,11 +1,18 @@
 <html>
 
-
+<?php
+			session_start();
+			
+			if(!isset($_SESSION['baimena'])&&$_SESSION['baimena']!="ikasle"){
+				//echo'<script>alert("Ez daukazu baimenik orri hau atzitzeko.")</script>';
+				header('Location: ./layout.html');
+			}
+			
+			
+	?>
 <script type="text/javascript">
 
-		<?php
-			session_start();
-		?>
+		
 	galderaKont();
 	var egun=setInterval(function(){galderaKont()},5000);
 	
@@ -94,11 +101,13 @@
 </script>
 <head>
 
-     <title>Sign Up</title>
+     <title> Handling Quizzes</title>
     
 </head>
 		 <body>
-		
+			<div align="right">
+				<a href="logout.php">Logout</a>	
+			</div>
 			 <form name="formularioa">
 				 Galdera
 				 <input type="text" id="galdera" name="galdera" size="30" maxlength="100">

@@ -16,6 +16,7 @@ function balidatu(){
 	var mugikorra = document.getElementById("mugikorra").value;
 	var ezpezialitate = document.getElementById("ezpezialitatea").value;
 	var idatziezpezialitatea=document.getElementById("idatziezpezialitatea").value;
+	var pasahitzaerrep=document.getElementById("pasahitzaerr").value;
 	/*
 	var divpass= document.getElementById("pasa");
 	var divemail= document.getElementById("erantzuna");
@@ -29,6 +30,13 @@ function balidatu(){
 	if(pasahitza==""){
 		errorea+="Pasahitza eremua bete behar duzu \n";
 	}
+	if(pasahitzaerrep==""){
+		errorea+="Pasahitza errepikatu eremua bete behar duzu \n";
+	}
+	if(pasahitza==pasahitzaerrep){
+		errorea+="Pasahitza desberdinak jarri dira\n";
+	}
+	
 	if(balidatzekoemail.test(email)==false){
 		errorea+="Email eremua bete behar duzu \n";	
 	}
@@ -139,11 +147,6 @@ document.getElementById("IE").hidden = true;
 				 Lehenengo Abizena (*):
 				 <input type="text" id="abizena1" name="abizena" size="30" maxlength="100"> 
 				 <br>
-				 Pasahitza (*):
-				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100" onchange="balidatuPass();"> 
-				 <div id="pasa" style="color:#A901DB" >
-				 </div>
-				 <br>
 				 Bigarren Abizena :
 				 <input type="text" id="abizena2" name="abizena2" size="30" maxlength="100"> 
 				 <br>
@@ -151,6 +154,14 @@ document.getElementById("IE").hidden = true;
 				 <input type="text" id="email" name="email" size="30" maxlength="100" onchange="balidatuEmail();"> 
 				 <div id="erantzuna" style="color:#A901DB">
 				 </div>
+				 <br>
+				 Pasahitza (*):
+				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100" onchange="balidatuPass();"> 
+				 <div id="pasa" style="color:#A901DB" >
+				 </div>
+				 <br>
+				 Pasahitza errepikatu(*):
+				 <input type="text" id="pasahitzaerr" name="pasahitzaerr" size="30" maxlength="100"> 
 				 <br>
 				 Mugikor zenbakia(*):
 				 <input type="text" id="mugikorra" name="mugikorra" size="30" maxlength="100"> 
