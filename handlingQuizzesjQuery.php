@@ -5,21 +5,33 @@
 			
 			if(!isset($_SESSION['baimena'])&&$_SESSION['baimena']!="ikasle"){
 				//echo'<script>alert("Ez daukazu baimenik orri hau atzitzeko.")</script>';
-				header('Location: ./layout.html');
+				header('Location: ./layout.php');
 			}
 			
 			
 	?>
+	
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script type="text/javascript">
 
 		
 	galderaKont();
-	var egun=setInterval(function(){galderaKont()},5000);
+	var egun=setInterval(function(){galderaKont()},2500);
 	
 	function ikusiGaldera(){
-
- 		
-		xmlhttp= new XMLHttpRequest();
+		$('#erakutsi').html('<div><img src="loading.gif"/></div>');
+ 		var jqxhr=$.post("IkusiGalderakjQuery.php",
+							function(datuak){
+								$('#erakutsi').fadeIn(1000).html(datuak);
+							}		
+						);
+			jqxhr.fail(function(){
+							$('#content').fadeIn().html('<p class="error"> <strong> Zerbitzariak ez duela erantzuten dirudi </p>');
+						}
+					)
+		/*xmlhttp= new XMLHttpRequest();
 		var sesioa='<?php echo $_SESSION['erabiltzaile'];?>'
 		var str="email=";
 		xmlhttp.onreadystatechange = function()
@@ -30,7 +42,7 @@
 		}
 		xmlhttp.open("POST","IkusiGalderak.php"); 
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send(str.concat(sesioa));
+		xmlhttp.send(str.concat(sesioa));*/
 		
 	}
 		
@@ -47,7 +59,7 @@
 		document.getElementById("erantzuna").value="";
 		document.getElementById("zailtasuna").value="";
 		if(galdera==""){
-				errorea+="Pasahitza eremua bete behar duzu \n";
+				errorea+="Galderra eremua bete behar duzu \n";
 		}
 		if(erantzuna==""){
 				errorea+="Erantzuna eremua bete behar duzu \n";
@@ -56,14 +68,35 @@
 		if(errorea!=""){
 				alert(errorea);
 				 
-		}
-		else{
+		}else{
+		
+		
 		
 			var str1 = "galdera=";
 			var str2 = "erantzuna=";
 			var str3 = "zailtasuna=";	
 			var str4="erabiltzaile=";
-			xmlhttp= new XMLHttpRequest();
+			var bidaltzekodatuak=str1.concat(galdera)+'&'+str2.concat(erantzuna)+'&'+str3.concat(zailtasuna)+'&'+str4.concat(sesioa);
+			$.ajax({
+				url : "EditQuestionsjQuery.php",
+				type: "POST",
+				data : bidaltzekodatuak,
+				beforeSend:function()
+							{
+								$('#erakutsi').html('<div><img src="loading.gif"/></div>');
+							},
+				success: function(datuak)
+						{
+							$('#erakutsi').fadeIn().html(datuak);
+						},
+				error: function ()
+				{
+					$('#content').fadeIn().html('<p class="error"> <strong> Zerbitzariak ez duela erantzuten dirudi </p>');
+				}
+				});
+			}
+			
+			/*xmlhttp= new XMLHttpRequest();
 
 			xmlhttp.onreadystatechange = function()
 			{
@@ -76,7 +109,7 @@
 			xmlhttp.send(str1.concat(galdera)+'&'+str2.concat(erantzuna)+'&'+str3.concat(zailtasuna)+'&'+str4.concat(sesioa));
 			return true;
 						
-		}
+		} */
 	
 	}
 	
@@ -96,18 +129,28 @@
 		xmlhttp.send(str.concat(sesioa));
 	
 	}
-	
+	function layout(){
+		window.location = "http://localhost/LAB1/layout.php";
+			
+	}
+	function logout(){
+		window.location = "http://localhost/LAB1/logout.php";
+			
+	}
 
 </script>
 <head>
 
+	<link rel="stylesheet" type="text/css" href="stylesPWS/taula.css">
      <title> Handling Quizzes</title>
     
 </head>
-		 <body>
-			<div align="right">
-				<a href="logout.php">Logout</a>	
+		 <body background="images/body.jpg">
+		 <div >
+			<input class="itzuli" type="button" id="botout" name="botout" value="Logout" onclick="logout();">
+			<input class="itzuli" type="button" id="bot" name="bot" value="Itzuli" onclick="layout();">	
 			</div>
+			<div class="galde">
 			 <form name="formularioa">
 				 Galdera
 				 <input type="text" id="galdera" name="galdera" size="30" maxlength="100">
@@ -126,13 +169,15 @@
 				</select>					
 				 <br>
 				 <br>
-				 <input type="button" value="Ikusi Galderak" onClick="ikusiGaldera();">
-				 <input type="button" value="Bidali Galderak" onClick="bidaliGalderak();">
+				 <input type="button" class="btn" value="Ikusi Galderak" onClick="ikusiGaldera();">
+				 <input type="button" class="btn" value="Bidali Galderak" onClick="bidaliGalderak();">
 				
 		</form>
 		
 
 		<div id="kontagailua" style="color:#A901DB">
+		</div>
+		
 		</div>
 		<br>
 		<div id="erakutsi">

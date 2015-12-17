@@ -1,9 +1,9 @@
 <html>
 <script type="text/javascript">
 
-	//var divpass;
-	//var divemail;
 
+var balidatutap="";
+var balidatutae="";
 function balidatu(){
 
 	var errorea="";
@@ -17,10 +17,10 @@ function balidatu(){
 	var ezpezialitate = document.getElementById("ezpezialitatea").value;
 	var idatziezpezialitatea=document.getElementById("idatziezpezialitatea").value;
 	var pasahitzaerrep=document.getElementById("pasahitzaerr").value;
-	/*
-	var divpass= document.getElementById("pasa");
-	var divemail= document.getElementById("erantzuna");
-	*/
+	var galdera=document.getElementById("galdera").value;
+	var erantzuna=document.getElementById("erantzuna").value;
+	
+	
 	if(izen==""){
 		errorea+="Izena eremua bete behar duzu \n";
 	}	
@@ -33,7 +33,7 @@ function balidatu(){
 	if(pasahitzaerrep==""){
 		errorea+="Pasahitza errepikatu eremua bete behar duzu \n";
 	}
-	if(pasahitza==pasahitzaerrep){
+	if(pasahitza!=pasahitzaerrep){
 		errorea+="Pasahitza desberdinak jarri dira\n";
 	}
 	
@@ -49,6 +49,15 @@ function balidatu(){
 
 	}
 	
+	if(galdera==""){
+		errorea+="Segurtasun galdera sartu behar duzu \n";
+
+	}
+	if(erantzuna==""){
+		errorea+="Erantzuna sartu behar duzu \n";
+
+	}	
+	
 	if(ezpezialitate=="Beste ezpezialitate bat"){
 		if(idatziezpezialitatea==""){
 			errorea+="Ezpezialitatea idatzi behar duzu \n";
@@ -56,33 +65,18 @@ function balidatu(){
 
 	}
 	
-	/*
-	if(divpass==""){
-		errorea+="pasahitza sartu behar da\n";
-
+	if(balidatutap=="ez"){
+			errorea+="Pasahitza ez da balizkoa\n";
 	}
-	if(divpass="Pasahitza baliogabea"){
-		errorea+="pasahitza insegurua n\";
-	
+	if(balidatutae=="ez"){
+			errorea+="Email hau ez dago matrikulatuta irakasgaian\n";
 	}
-	if(divemail==""){
-		errorea+="emaila sartu behar da\n";
-
-	}
-	if(divemail="Email okerra"){
-		errorea+="email erregistratua n\";
-	
-	}
-	*/
-	
-	
-	
 	if(errorea!=""){
 		alert(errorea);
 		return false;
 	}
 	else{
-		//alert("Dena ondo bete duzu, bidalketa egin da.");
+		alert("Dena ondo bete duzu, bidalketa egin da.");
 		return true;
 	}
 }
@@ -95,8 +89,12 @@ function balidatuEmail(){
 		xmlhttp.onreadystatechange = function()
 		{
 			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			if(xmlhttp.responseText.trim()=='Email okerra'){
+				var balidatutae="ez";
+			}else{
+				var balidatutae="bai";
+			}
 				document.getElementById("erantzuna").innerHTML=xmlhttp.responseText; 
-				//divemail=xmlhttp.responseText;
 			}
 		}
 		xmlhttp.open("POST","soapBezMatrikula.php"); 
@@ -113,9 +111,12 @@ function balidatuEmail(){
 		xmlhttp.onreadystatechange = function()
 		{
 			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				if(xmlhttp.responseText.trim()=='Pasahitza baliogabea'){
+						balidatutap="ez";
+					}else{
+						balidatutap="bai";
+					}
 				document.getElementById("pasa").innerHTML=xmlhttp.responseText; 
-				//divpass=xmlhttp.responseText;
-				
 			}
 		}
 		xmlhttp.open("POST","soapBezPasahitza.php"); 
@@ -133,14 +134,20 @@ document.getElementById("IE").hidden = true;
 
 }
 
+function layout(){
+		window.location = "http://localhost/LAB1/layout.php";
+	}
+
 </script>
 <head>
-
+<link rel="stylesheet" type="text/css" href="stylesPWS/login.css">
      <title>Sign Up</title>
     
 </head>
-		 <body>
-			 <form name="erregistro" method="post" action="Erregistratu.php" onSubmit="return balidatu();" >
+		 <body background="images/body.jpg">
+		  <div><input class="itzuli" type="button" id="bot" name="bot" value="Itzuli" onclick="layout();"></div>
+		 <div class="signup">
+			 <form name="erregistro" method="post" action="Erregistratu.php" onSubmit="return balidatu();" enctype="multipart/form-data" >
 				 Izena (*):
 				 <input type="text" id="izena"  name="izena" size="30" maxlength="100"> 
 				 <br>
@@ -161,10 +168,16 @@ document.getElementById("IE").hidden = true;
 				 </div>
 				 <br>
 				 Pasahitza errepikatu(*):
-				 <input type="text" id="pasahitzaerr" name="pasahitzaerr" size="30" maxlength="100"> 
+				 <input type="password" id="pasahitzaerr" name="pasahitzaerr" size="30" maxlength="100"> 
 				 <br>
 				 Mugikor zenbakia(*):
 				 <input type="text" id="mugikorra" name="mugikorra" size="30" maxlength="100"> 
+				 <br>
+				 Segurtasun galdera pasahitza berreskuratzeko(*):
+				 <input type="text" id="galdera" name="galdera" size="30" maxlength="100"> 
+				 <br>
+				 Erantzuna(*):
+				 <input type="text" id="erantzuna" name="erantzuna" size="30" maxlength="100"> 
 				 <br>
 				 Ezpezialitatea (*):
 				 <select name="ezpezialitatea" id="ezpezialitatea">
@@ -187,13 +200,13 @@ document.getElementById("IE").hidden = true;
 				 <br>
 				 Argazkia:
 				 <br>
-				 <input type="file" name="argazkia" id="argazkia" size="30"> 
+				 <input type="file" name="argazkia" id="argazkia"> 
 				 <br>
 				 <br>
-				 <input type="Reset"  value="Dena Ezabatu">&nbsp&nbsp&nbsp&nbsp
-				 <input type="submit" value="Enviar">
+				 <input type="Reset" class="btn" value="Dena Ezabatu">&nbsp&nbsp&nbsp&nbsp
+				 <input type="submit" class="btn" value="Enviar">
 			 </form>
-			 
+			 </div>
 			 	 <br>
 			 	 
 			

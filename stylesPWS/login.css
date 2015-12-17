@@ -1,0 +1,143 @@
+.login {
+	/*Taula zenbatekoa den*/
+	height:200px;
+	width:220px;
+	margin:auto;
+	
+	border:1px #CCC solid;
+	padding:10px;
+	background-color:#E9E9E9;
+	
+	/*Non kokatzen den, absolute orrialdearen barnean*/
+	position: absolute;
+	top:30%;
+	left:40%;
+
+	
+}
+
+ 
+ 
+ .signup {
+	/*Taula zenbatekoa den*/
+	height:690px;
+	width:580px;
+	margin:auto;
+	
+	border:1px #CCC solid;
+	padding:10px;
+	background-color:#E9E9E9;
+	
+	/*Non kokatzen den, absolute orrialdearen barnean*/
+	position: absolute;
+	left:30%;
+
+	
+}
+ 
+ 
+ 
+ 
+ .berre {
+	/*Taula zenbatekoa den*/
+	height:300px;
+	width:220px;
+	margin:auto;
+	
+	border:1px #CCC solid;
+	padding:10px;
+	background-color:#E9E9E9;
+	
+	/*Non kokatzen den, absolute orrialdearen barnean*/
+	position: absolute;
+	top:30%;
+	left:40%;
+
+	
+}
+input {
+	background: #E1FFE1;
+	border:1px #CCC solid;
+	padding:5px;
+	position: relative;
+
+}
+
+
+#botoia{
+background: #E1FFE1;
+	border:1px #CCC solid;
+	padding:5px;
+	position: relative;
+
+}
+
+#BidaliBotoia{
+	/*Relative kokatzen den elementuaren barnean*/
+	position: relative;
+	left: 70%;
+
+}
+
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -moz-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -ms-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -o-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: linear-gradient(to bottom, #64FE2E, #64FE2E);
+  text-decoration: none;
+}
+
+
+.itzuli {
+  background: #ffd500;
+  background-image: -webkit-linear-gradient(top, #ffd500, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffd500, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffd500, #ffd500);
+  background-image: -o-linear-gradient(top, #ffd500, #ffd500);
+  background-image: linear-gradient(to bottom, #ffd500, #ffd500);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #006904;
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
+
+ }
+
+.itzuli:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -moz-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -ms-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: -o-linear-gradient(top, #64FE2E, #64FE2E);
+  background-image: linear-gradient(to bottom, #64FE2E, #64FE2E);
+  text-decoration: none;
+}
+
+#bot {
+	position: absolute;
+	left:90%;
+}
+

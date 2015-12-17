@@ -1,0 +1,18 @@
+body				{background: #C1CEC2;}
+h2				{font:oblique bold 120% cursive;}
+.image {
+   padding:8px 8px 20px 8px;
+   background-color: #ffffff;
+   width: 420px;
+   border: 1px solid #999999;
+} 
+.verticalline{
+	border-left: thick solid #ff0000;
+
+}
+.ezkerra{
+background-color: orange;
+}
+.eskuina{
+background-color: orange;
+}

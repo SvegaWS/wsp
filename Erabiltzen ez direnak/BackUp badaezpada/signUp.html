@@ -1,0 +1,193 @@
+<html>
+<script type="text/javascript">
+
+
+function balidatu(){
+
+	var errorea="";
+	var balidatzekomugikorra = new RegExp("^[6|9]{1}-? ?[0-9]{8}$");
+	var balidatzekoemail= new RegExp("^[a-zA-Z]+[0-9]{3}\@ikasle\.ehu\.es|eus$");
+	var izen = document.getElementById("izena").value;
+	var abizena1 = document.getElementById("abizena1").value;
+	var pasahitza = document.getElementById("pasahitza").value;
+	var email = document.getElementById("email").value;
+	var mugikorra = document.getElementById("mugikorra").value;
+	var ezpezialitate = document.getElementById("ezpezialitatea").value;
+	var idatziezpezialitatea=document.getElementById("idatziezpezialitatea").value;
+	var pasahitzaerrep=document.getElementById("pasahitzaerr").value;
+	var galdera=document.getElementById("galdera").value;
+	var erantzuna=document.getElementById("erantzuna").value;
+	
+	
+	if(izen==""){
+		errorea+="Izena eremua bete behar duzu \n";
+	}	
+	if(abizena1==""){
+		errorea+="Lehenengo abizena eremua bete behar duzu \n";
+	}
+	if(pasahitza==""){
+		errorea+="Pasahitza eremua bete behar duzu \n";
+	}
+	if(pasahitzaerrep==""){
+		errorea+="Pasahitza errepikatu eremua bete behar duzu \n";
+	}
+	if(pasahitza!=pasahitzaerrep){
+		errorea+="Pasahitza desberdinak jarri dira\n";
+	}
+	
+	if(balidatzekoemail.test(email)==false){
+		errorea+="Email eremua bete behar duzu \n";	
+	}
+	if(balidatzekomugikorra.test(mugikorra)==false){
+		errorea+="Telefono eremua ondo bete behar duzu, hau da karaketererik gabe eta 9 zenbaki \n";
+		
+	}
+	if(ezpezialitate==""){
+		errorea+="Ezpezialitatea aukeratu behar duzu \n";
+
+	}
+	
+	if(galdera==""){
+		errorea+="Segurtasun galdera sartu behar duzu \n";
+
+	}
+	if(erantzuna==""){
+		errorea+="Erantzuna sartu behar duzu \n";
+
+	}	
+	
+	if(ezpezialitate=="Beste ezpezialitate bat"){
+		if(idatziezpezialitatea==""){
+			errorea+="Ezpezialitatea idatzi behar duzu \n";
+		}
+
+	}
+	
+	
+	if(errorea!=""){
+		alert(errorea);
+		return false;
+	}
+	else{
+		alert("Dena ondo bete duzu, bidalketa egin da.");
+		return true;
+	}
+}
+
+function balidatuEmail(){
+
+ 		
+		xmlhttp= new XMLHttpRequest();
+		var posta=document.getElementById("email").value;
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("erantzuna").innerHTML=xmlhttp.responseText; 
+			}
+		}
+		xmlhttp.open("POST","soapBezMatrikula.php"); 
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("email="+posta);
+		
+	}
+	
+	function balidatuPass(){
+
+ 		
+		xmlhttp= new XMLHttpRequest();
+		var pass=document.getElementById("pasahitza").value;
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("pasa").innerHTML=xmlhttp.responseText; 
+			}
+		}
+		xmlhttp.open("POST","soapBezPasahitza.php"); 
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("pass="+pass);
+		
+	}
+
+function erakutsi(){
+document.getElementById("IE").hidden = false;
+}
+
+function ezkutatu(){
+document.getElementById("IE").hidden = true;
+
+}
+
+</script>
+<head>
+
+     <title>Sign Up</title>
+    
+</head>
+		 <body>
+			 <form name="erregistro" method="post" action="Erregistratu.php" onSubmit="return balidatu();" >
+				 Izena (*):
+				 <input type="text" id="izena"  name="izena" size="30" maxlength="100"> 
+				 <br>
+				 Lehenengo Abizena (*):
+				 <input type="text" id="abizena1" name="abizena" size="30" maxlength="100"> 
+				 <br>
+				 Bigarren Abizena :
+				 <input type="text" id="abizena2" name="abizena2" size="30" maxlength="100"> 
+				 <br>
+				 Posta elektronikoa (*):
+				 <input type="text" id="email" name="email" size="30" maxlength="100" onchange="balidatuEmail();"> 
+				 <div id="erantzuna" style="color:#A901DB">
+				 </div>
+				 <br>
+				 Pasahitza (*):
+				 <input type="password" id="pasahitza" name="pasahitza" size="30" maxlength="100" onchange="balidatuPass();"> 
+				 <div id="pasa" style="color:#A901DB" >
+				 </div>
+				 <br>
+				 Pasahitza errepikatu(*):
+				 <input type="password" id="pasahitzaerr" name="pasahitzaerr" size="30" maxlength="100"> 
+				 <br>
+				 Mugikor zenbakia(*):
+				 <input type="text" id="mugikorra" name="mugikorra" size="30" maxlength="100"> 
+				 <br>
+				 Segurtasun galdera pasahitza berreskuratzeko(*):
+				 <input type="text" id="galdera" name="galdera" size="30" maxlength="100"> 
+				 <br>
+				 Erantzuna(*):
+				 <input type="text" id="erantzuna" name="erantzuna" size="30" maxlength="100"> 
+				 <br>
+				 Ezpezialitatea (*):
+				 <select name="ezpezialitatea" id="ezpezialitatea">
+					<option value="" selected disabled > Aukeratu ezpezialitate</option> 
+				    <option value="Software Ingenieritza" onclick="ezkutatu()">Software Ingenieritza</option> 
+				    <option value="Hardware Ingenieritza" onclick="ezkutatu()">Hardware Ingenieritza</option> 
+				    <option value="Konputazioa" onclick="ezkutatu()">Konputazio zientziak</option>
+					<option value="4" onclick="erakutsi()">Beste ezpezialitate bat</option>
+				 </select>
+				  <br>
+				  <br>
+				 <p hidden id="IE">Idatzi epezialitatea(*): <input type="text" id="idatziezpezialitatea" name="idatziezpezialitatea" size="30" maxlength="100">
+				 </p>
+				 <br>
+				 <br>
+				 Teknologia eta tresnetan duzun interesa:
+				 <br>
+				 <textarea cols="40" rows="7" name="interesak"></textarea>
+				 <br>
+				 <br>
+				 Argazkia:
+				 <br>
+				 <input type="file" name="argazkia" id="argazkia" size="30"> 
+				 <br>
+				 <br>
+				 <input type="Reset"  value="Dena Ezabatu">&nbsp&nbsp&nbsp&nbsp
+				 <input type="submit" value="Enviar">
+			 </form>
+			 
+			 	 <br>
+			 	 
+			
+				 <br>
+				 
+			 </body>
+</html>

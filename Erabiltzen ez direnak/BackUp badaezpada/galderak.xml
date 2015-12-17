@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<assessmentItems>
+	<assessmentItem konplexutasuna="3">
+		<itemBody> 
+			<p>Amanita muskaria zer da?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Perretxikoa</value>
+		</correctResponse>
+	</assessmentItem>
+	<assessmentItem konplexutasuna="5">
+		<itemBody>
+			<p>Amanita hilkorrena da:</p>
+		</itemBody>
+		<correctResponse>
+			<value>Phalloides</value>
+		</correctResponse>
+	</assessmentItem>
+	<assesmentItem konplexutasuna="Ez dauka konplexutasunik">
+		<itemBody>
+			<p>proba</p>
+		</itemBody>
+		<correctResponse>
+			<value>proba</value>
+		</correctResponse>
+	</assesmentItem>
+<assessmentItem konplexutasuna="Ez dauka konplexutasunik"><itemBody><p>proba xml</p></itemBody><correctResponse><value>proba </value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>proba zailtasun</p></itemBody><correctResponse><value>proba</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="2"><itemBody><p>proba galdera hautazko</p></itemBody><correctResponse><value>hautazko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna=""><itemBody><p>ajax proba</p></itemBody><correctResponse><value>ajax proba</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>ajax proba</p></itemBody><correctResponse><value>ajax proba zailtasunarekin</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="5"><itemBody><p>proba ajax </p></itemBody><correctResponse><value>beste proba ajax</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="1"><itemBody><p>ezabatzen bada ikusteko</p></itemBody><correctResponse><value>ezabatzen bada ikusteko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="1"><itemBody><p>ezabatzen bada ikusteko</p></itemBody><correctResponse><value>ezabatzen bada ikusteko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="2"><itemBody><p>ezabatzen bada ikusteko</p></itemBody><correctResponse><value>ezabatzen bada ikusteko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="2"><itemBody><p>ezabatzen bada ikusteko</p></itemBody><correctResponse><value>ezabatzen bada ikusteko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="4"><itemBody><p>ezabatzen bada ikusteko</p></itemBody><correctResponse><value>ezabatzen bada ikusteko</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="5"><itemBody><p>Mi polls te gusta?</p></itemBody><correctResponse><value>Si mucho mi amor</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="2"><itemBody><p>asdafadaasd</p></itemBody><correctResponse><value>asdasda</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>efefefeferfefeef</p></itemBody><correctResponse><value>fefefefefef</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>asfa</p></itemBody><correctResponse><value>afasfafsa</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="3"><itemBody><p>sdgfsfsdf</p></itemBody><correctResponse><value>fsdfsdfsdfsdfs</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="5"><itemBody><p>Hey whats up bitch</p></itemBody><correctResponse><value>Suck my dick</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="4"><itemBody><p>Proba</p></itemBody><correctResponse><value>Yipikaiei</value></correctResponse></assessmentItem><assessmentItem konplexutasuna="1"><itemBody><p>Si te dan el bal&#xF3;n de oro que contestas?</p></itemBody><correctResponse><value>Suuuuuu</value></correctResponse></assessmentItem><assessmentItem konplexutasuna=""><itemBody><p>suuu</p></itemBody><correctResponse><value>suu</value></correctResponse></assessmentItem></assessmentItems>
